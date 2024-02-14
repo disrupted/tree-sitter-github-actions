@@ -21,9 +21,9 @@
       "type": "STRING",
       "value": "."
     },
-    "_str": {
+    "_number": {
       "type": "PATTERN",
-      "value": "[\\w\\W]+"
+      "value": "\\d+"
     },
     "string_content": {
       "type": "TOKEN",
@@ -35,10 +35,6 @@
           "value": "([^'\\\\\\r\\n]|\\\\(.|\\r?\\n))+"
         }
       }
-    },
-    "_number": {
-      "type": "PATTERN",
-      "value": "\\d+"
     },
     "identifier": {
       "type": "PATTERN",
@@ -62,6 +58,10 @@
         {
           "type": "SYMBOL",
           "name": "float"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex"
         },
         {
           "type": "SYMBOL",
@@ -124,6 +124,19 @@
         {
           "type": "SYMBOL",
           "name": "_number"
+        }
+      ]
+    },
+    "hex": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "0x"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9a-f]+"
         }
       ]
     },
