@@ -42,7 +42,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z][a-zA-Z0-9]+"
+      "value": "[a-z][a-zA-Z0-9_]+"
     },
     "type": {
       "type": "CHOICE",

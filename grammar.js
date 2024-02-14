@@ -14,7 +14,7 @@ module.exports = grammar({
     _number: $ => /\d+/,
     asterisk: $ => "*",
     string_content: _ => token(prec(-1, /([^'\\\r\n]|\\(.|\r?\n))+/)),
-    identifier: $ => /[a-z][a-zA-Z0-9]+/,
+    identifier: $ => /[a-z][a-zA-Z0-9_]+/,
 
     // primitive types
     type: $ => choice(
