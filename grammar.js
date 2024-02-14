@@ -15,7 +15,13 @@ module.exports = grammar({
     _number: $ => /\d+/,
 
     // primitive types
-    type: $ => choice($.null, $.boolean, $.int, $.float, $.string),
+    type: $ => choice(
+            $.null,
+            $.boolean,
+            $.int,
+            $.float,
+            $.string
+        ),
     null: $ => "null",
     true: $ => "true",
     false: $ => "false",
@@ -24,11 +30,38 @@ module.exports = grammar({
     float: $ => seq(optional("-"), $._number, $._dot, $._number),
     string: $ => seq("'", $.identifier, "'"),
 
+    // operators
+    operator: $ => choice(
+            $.logical_group,
+            $.index,
+            // $.property_deref,
+            $.not,
+            $.lt,
+            $.le,
+            $.gt,
+            $.ge,
+            $.eq,
+            $.ne,
+            $.and,
+            $.or,
+        ),
+    logical_group: $ => "( )",
+    index: $ => "[ ]",
+    property_deref: $ => $._dot,
+    not: $ => "!",
+    lt: $ => "<",
+    le: $ => "<=",
+    gt: $ => ">",
+    ge: $ => ">=",
+    eq: $ => "==",
+    ne: $ => "!=",
+    and: $ => "&&",
+    or: $ => "||",
+
     env_var: $ => /[A-Z_]+/,
     whitespace: $ => /\\s+/,
-    equals: $ => "==",
     context: $ => $.identifier,
-    property: $ => seq($._dot, choice($.identifier, $.env_var)),
+    property: $ => seq($.property_deref, choice($.identifier, $.env_var)),
 
     variable: $ =>
       seq(
@@ -39,7 +72,7 @@ module.exports = grammar({
             seq($.context, optional($.property))
           ),
           optional(seq(
-            $.equals,
+            $.operator,
             choice(
               $.type,
               seq($.context, optional($.property))

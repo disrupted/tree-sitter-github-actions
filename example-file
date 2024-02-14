@@ -15,3 +15,5 @@ ${{ 'string' }}
 ${{ vars.HELLO_WORLD_STEP }}
 
 ${{ context.property == 'true' }}
+${{ context.property || 'true' }}
+${{ context.property || true }}

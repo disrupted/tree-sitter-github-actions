@@ -129,6 +129,103 @@
         }
       ]
     },
+    "operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "logical_group"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "index"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "not"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "le"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ge"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "eq"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ne"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "and"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "or"
+        }
+      ]
+    },
+    "logical_group": {
+      "type": "STRING",
+      "value": "( )"
+    },
+    "index": {
+      "type": "STRING",
+      "value": "[ ]"
+    },
+    "property_deref": {
+      "type": "SYMBOL",
+      "name": "_dot"
+    },
+    "not": {
+      "type": "STRING",
+      "value": "!"
+    },
+    "lt": {
+      "type": "STRING",
+      "value": "<"
+    },
+    "le": {
+      "type": "STRING",
+      "value": "<="
+    },
+    "gt": {
+      "type": "STRING",
+      "value": ">"
+    },
+    "ge": {
+      "type": "STRING",
+      "value": ">="
+    },
+    "eq": {
+      "type": "STRING",
+      "value": "=="
+    },
+    "ne": {
+      "type": "STRING",
+      "value": "!="
+    },
+    "and": {
+      "type": "STRING",
+      "value": "&&"
+    },
+    "or": {
+      "type": "STRING",
+      "value": "||"
+    },
     "env_var": {
       "type": "PATTERN",
       "value": "[A-Z_]+"
@@ -136,10 +233,6 @@
     "whitespace": {
       "type": "PATTERN",
       "value": "\\\\s+"
-    },
-    "equals": {
-      "type": "STRING",
-      "value": "=="
     },
     "context": {
       "type": "SYMBOL",
@@ -150,7 +243,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_dot"
+          "name": "property_deref"
         },
         {
           "type": "CHOICE",
@@ -215,7 +308,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "equals"
+                      "name": "operator"
                     },
                     {
                       "type": "CHOICE",
