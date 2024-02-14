@@ -8,11 +8,11 @@
       "required": true,
       "types": [
         {
-          "type": "context",
+          "type": "call",
           "named": true
         },
         {
-          "type": "function",
+          "type": "context",
           "named": true
         },
         {
@@ -46,6 +46,36 @@
     }
   },
   {
+    "type": "call",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "arg",
+            "named": true
+          }
+        ]
+      },
+      "function": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "context",
     "named": true,
     "fields": {},
@@ -69,40 +99,6 @@
     "type": "float",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "function",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "function_args",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "function_args",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arg",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "hex",

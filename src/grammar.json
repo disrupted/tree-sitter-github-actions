@@ -342,7 +342,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "function"
+          "name": "call"
         },
         {
           "type": "SEQ",
@@ -370,20 +370,28 @@
         }
       ]
     },
-    "function": {
+    "call": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "function",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "STRING",
           "value": "("
         },
         {
-          "type": "SYMBOL",
-          "name": "function_args"
+          "type": "FIELD",
+          "name": "arguments",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_call_args"
+          }
         },
         {
           "type": "STRING",
@@ -391,7 +399,7 @@
         }
       ]
     },
-    "function_args": {
+    "_call_args": {
       "type": "SEQ",
       "members": [
         {

@@ -70,9 +70,9 @@ module.exports = grammar({
     context: $ => $.identifier,
     property: $ => seq($.property_deref, choice($.identifier, $.env_var, $.asterisk)),
 
-    arg: $ => choice($.type, $.function, seq($.context, optional(repeat($.property)))),
-    function: $ => seq($.identifier, "(", $.function_args, ")"),
-    function_args: $ => seq($.arg, optional(repeat(seq(",", $.arg)))),
+    arg: $ => choice($.type, $.call, seq($.context, optional(repeat($.property)))),
+    call: $ => seq(field("function", $.identifier), "(", field("arguments", $._call_args), ")"),
+    _call_args: $ => seq($.arg, optional(repeat(seq(",", $.arg)))),
 
     variable_content: $ => seq(
           $.arg,
