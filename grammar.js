@@ -22,6 +22,7 @@ module.exports = grammar({
             $.int,
             $.float,
             $.hex,
+            $.exp,
             $.string
         ),
     null: $ => "null",
@@ -29,8 +30,10 @@ module.exports = grammar({
     false: $ => "false",
     boolean: $ => choice($.true, $.false),
     int: $ => $._number,
-    float: $ => seq(optional("-"), $._number, $._dot, $._number),
+    _float: $ => seq(optional("-"), $._number, $._dot, $._number),
+    float: $ => $._float,
     hex: $ => seq("0x", /[0-9a-f]+/),
+    exp: $ => seq($._float, "e", optional("-"), $._number),
     string: $ => seq("'", $.string_content, "'"),
 
     // operators

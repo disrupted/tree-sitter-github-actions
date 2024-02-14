@@ -65,6 +65,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "exp"
+        },
+        {
+          "type": "SYMBOL",
           "name": "string"
         }
       ]
@@ -98,7 +102,7 @@
       "type": "SYMBOL",
       "name": "_number"
     },
-    "float": {
+    "_float": {
       "type": "SEQ",
       "members": [
         {
@@ -127,6 +131,10 @@
         }
       ]
     },
+    "float": {
+      "type": "SYMBOL",
+      "name": "_float"
+    },
     "hex": {
       "type": "SEQ",
       "members": [
@@ -137,6 +145,35 @@
         {
           "type": "PATTERN",
           "value": "[0-9a-f]+"
+        }
+      ]
+    },
+    "exp": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_float"
+        },
+        {
+          "type": "STRING",
+          "value": "e"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_number"
         }
       ]
     },

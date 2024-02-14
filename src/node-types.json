@@ -34,6 +34,11 @@
     }
   },
   {
+    "type": "exp",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "float",
     "named": true,
     "fields": {}
@@ -174,6 +179,10 @@
           "named": true
         },
         {
+          "type": "exp",
+          "named": true
+        },
+        {
           "type": "float",
           "named": true
         },
@@ -242,6 +251,10 @@
   {
     "type": "and",
     "named": true
+  },
+  {
+    "type": "e",
+    "named": false
   },
   {
     "type": "env_var",
