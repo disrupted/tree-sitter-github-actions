@@ -84,7 +84,8 @@ module.exports = grammar({
         ),
     variable: $ =>
       seq(
-        "${{",
+        "$",
+        "{{",
         $.variable_content,
         "}}"
       ),
