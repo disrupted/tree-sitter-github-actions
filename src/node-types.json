@@ -150,7 +150,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "string_content",
           "named": true
         }
       ]
@@ -284,6 +284,10 @@
   },
   {
     "type": "or",
+    "named": true
+  },
+  {
+    "type": "string_content",
     "named": true
   },
   {

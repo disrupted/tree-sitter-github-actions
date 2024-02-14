@@ -11,8 +11,9 @@ module.exports = grammar({
       ),
 
     _dot: $ => ".",
-    identifier: $ => /[a-z]+/,
     _number: $ => /\d+/,
+    string_content: _ => token(prec(-1, /([^'\\\r\n]|\\(.|\r?\n))+/)),
+    identifier: $ => /[a-z]+/,
 
     // primitive types
     type: $ => choice(
@@ -28,7 +29,7 @@ module.exports = grammar({
     boolean: $ => choice($.true, $.false),
     int: $ => $._number,
     float: $ => seq(optional("-"), $._number, $._dot, $._number),
-    string: $ => seq("'", $.identifier, "'"),
+    string: $ => seq("'", $.string_content, "'"),
 
     // operators
     operator: $ => choice(
@@ -71,13 +72,13 @@ module.exports = grammar({
             $.type,
             seq($.context, optional($.property))
           ),
-          optional(seq(
+          optional(repeat(seq(
             $.operator,
             choice(
               $.type,
               seq($.context, optional($.property))
             )
-          ))
+          )))
         ),
         "}}"
       ),
