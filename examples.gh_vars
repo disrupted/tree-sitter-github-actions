@@ -26,4 +26,4 @@ ${{ func(foo) }}
 ${{ func(foo, bar) }}
 ${{ contains(github.event.issue.labels.*.name, 'bug') }}
 ${{ failure() && steps.demo.conclusion == 'failure' }}
-${{ fromJSON(needs.job.outputs.matrix) }}
+${{ fromJSON(needs.job1.outputs.matrix) }}
