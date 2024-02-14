@@ -23,6 +23,10 @@
       "required": true,
       "types": [
         {
+          "type": "env_var",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         }
@@ -89,6 +93,10 @@
   {
     "type": "'",
     "named": false
+  },
+  {
+    "type": "env_var",
+    "named": true
   },
   {
     "type": "identifier",

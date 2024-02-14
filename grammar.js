@@ -11,10 +11,12 @@ module.exports = grammar({
       ),
 
     identifier: $ => /[a-z]+/,
+    env_var: $ => /[A-Z_]+/,
+    number: $ => /\d+/,
     whitespace: $ => /\\s+/,
     _dot: $ => '.',
     context: $ => $.identifier,
-    property: $ => seq($._dot, $.identifier),
+    property: $ => seq($._dot, choice($.identifier, $.env_var)),
     string: $ => seq("'", $.identifier, "'"),
 
     variable: $ => seq(

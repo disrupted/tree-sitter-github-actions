@@ -3,3 +3,5 @@ ${{ context }}
 ${{ context.property }}
 
 ${{ 'string' }}
+
+${{ vars.HELLO_WORLD_STEP }}

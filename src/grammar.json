@@ -21,6 +21,14 @@
       "type": "PATTERN",
       "value": "[a-z]+"
     },
+    "env_var": {
+      "type": "PATTERN",
+      "value": "[A-Z_]+"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
     "whitespace": {
       "type": "PATTERN",
       "value": "\\\\s+"
@@ -41,8 +49,17 @@
           "name": "_dot"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "env_var"
+            }
+          ]
         }
       ]
     },
