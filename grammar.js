@@ -69,10 +69,7 @@ module.exports = grammar({
     context: $ => $.identifier,
     property: $ => seq($.property_deref, choice($.identifier, $.env_var)),
 
-    variable: $ =>
-      seq(
-        "${{",
-        seq(
+    variable_content: $ => seq(
           choice(
             $.type,
             seq($.context, optional($.property))
@@ -85,6 +82,10 @@ module.exports = grammar({
             )
           )))
         ),
+    variable: $ =>
+      seq(
+        "${{",
+        $.variable_content,
         "}}"
       ),
   },
