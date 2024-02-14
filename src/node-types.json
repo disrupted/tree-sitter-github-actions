@@ -1,5 +1,32 @@
 [
   {
+    "type": "arg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "context",
+          "named": true
+        },
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "property",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "boolean",
     "named": true,
     "fields": {},
@@ -42,6 +69,40 @@
     "type": "float",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function_args",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_args",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arg",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "hex",
@@ -116,6 +177,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "asterisk",
+          "named": true
+        },
         {
           "type": "env_var",
           "named": true
@@ -229,19 +294,11 @@
       "required": true,
       "types": [
         {
-          "type": "context",
+          "type": "arg",
           "named": true
         },
         {
           "type": "operator",
-          "named": true
-        },
-        {
-          "type": "property",
-          "named": true
-        },
-        {
-          "type": "type",
           "named": true
         }
       ]
@@ -256,6 +313,18 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": "-",
     "named": false
   },
@@ -265,6 +334,10 @@
   },
   {
     "type": "and",
+    "named": true
+  },
+  {
+    "type": "asterisk",
     "named": true
   },
   {

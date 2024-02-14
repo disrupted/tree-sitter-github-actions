@@ -12,6 +12,7 @@ module.exports = grammar({
 
     _dot: $ => ".",
     _number: $ => /\d+/,
+    asterisk: $ => "*",
     string_content: _ => token(prec(-1, /([^'\\\r\n]|\\(.|\r?\n))+/)),
     identifier: $ => /[a-z]+/,
 
@@ -67,19 +68,17 @@ module.exports = grammar({
     env_var: $ => /[A-Z_]+/,
     whitespace: $ => /\\s+/,
     context: $ => $.identifier,
-    property: $ => seq($.property_deref, choice($.identifier, $.env_var)),
+    property: $ => seq($.property_deref, choice($.identifier, $.env_var, $.asterisk)),
+
+    arg: $ => choice($.type, $.function, seq($.context, optional(repeat($.property)))),
+    function: $ => seq($.identifier, "(", $.function_args, ")"),
+    function_args: $ => seq($.arg, optional(repeat(seq(",", $.arg)))),
 
     variable_content: $ => seq(
-          choice(
-            $.type,
-            seq($.context, optional($.property))
-          ),
+          $.arg,
           optional(repeat(seq(
             $.operator,
-            choice(
-              $.type,
-              seq($.context, optional($.property))
-            )
+            $.arg
           )))
         ),
     variable: $ =>
