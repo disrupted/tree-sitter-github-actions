@@ -1,3 +1,5 @@
-${{ var }}
+${{ context }}
 
-${{ var.name }}
+${{ context.property }}
+
+${{ 'string' }}

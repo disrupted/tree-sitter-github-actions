@@ -15,7 +15,15 @@ module.exports = grammar({
     _dot: $ => '.',
     context: $ => $.identifier,
     property: $ => seq($._dot, $.identifier),
+    string: $ => seq("'", $.identifier, "'"),
 
-    variable: $ => seq("${{", seq($.context, optional($.property)), "}}"),
+    variable: $ => seq(
+        "${{",
+        choice(
+            $.string,
+            seq($.context, optional($.property))
+        ),
+        "}}"
+    ),
   },
 });
