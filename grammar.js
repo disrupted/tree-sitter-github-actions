@@ -10,37 +10,43 @@ module.exports = grammar({
         // TODO: other kinds of definitions
       ),
 
-    null: $ => 'null',
-    boolean: $ => choice('true', 'false'),
+    _dot: $ => ".",
     identifier: $ => /[a-z]+/,
-    env_var: $ => /[A-Z_]+/,
-    number: $ => /\d+/,
-    whitespace: $ => /\\s+/,
-    _dot: $ => '.',
-    equals: $ => '==',
-    context: $ => $.identifier,
-    property: $ => seq($._dot, choice($.identifier, $.env_var)),
+    _number: $ => /\d+/,
+
+    // primitive types
+    type: $ => choice($.null, $.boolean, $.int, $.float, $.string),
+    null: $ => "null",
+    true: $ => "true",
+    false: $ => "false",
+    boolean: $ => choice($.true, $.false),
+    int: $ => $._number,
+    float: $ => seq(optional("-"), $._number, $._dot, $._number),
     string: $ => seq("'", $.identifier, "'"),
 
-    variable: $ => seq(
+    env_var: $ => /[A-Z_]+/,
+    whitespace: $ => /\\s+/,
+    equals: $ => "==",
+    context: $ => $.identifier,
+    property: $ => seq($._dot, choice($.identifier, $.env_var)),
+
+    variable: $ =>
+      seq(
         "${{",
         seq(
+          choice(
+            $.type,
+            seq($.context, optional($.property))
+          ),
+          optional(seq(
+            $.equals,
             choice(
-                $.null,
-                $.boolean,
-                $.string,
-                seq($.context, optional($.property))
-            ),
-            optional(seq(
-                $.equals,
-                choice(
-                    $.null,
-                    $.boolean,
-                    $.string,
-                    seq($.context, optional($.property))
-            ))),
+              $.type,
+              seq($.context, optional($.property))
+            )
+          ))
         ),
         "}}"
-    ),
+      ),
   },
 });

@@ -17,42 +17,125 @@
         }
       ]
     },
-    "null": {
+    "_dot": {
       "type": "STRING",
-      "value": "null"
-    },
-    "boolean": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "true"
-        },
-        {
-          "type": "STRING",
-          "value": "false"
-        }
-      ]
+      "value": "."
     },
     "identifier": {
       "type": "PATTERN",
       "value": "[a-z]+"
     },
+    "_number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "null"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "int"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "null": {
+      "type": "STRING",
+      "value": "null"
+    },
+    "true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "false": {
+      "type": "STRING",
+      "value": "false"
+    },
+    "boolean": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "true"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "false"
+        }
+      ]
+    },
+    "int": {
+      "type": "SYMBOL",
+      "name": "_number"
+    },
+    "float": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_dot"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_number"
+        }
+      ]
+    },
+    "string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        }
+      ]
+    },
     "env_var": {
       "type": "PATTERN",
       "value": "[A-Z_]+"
     },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+"
-    },
     "whitespace": {
       "type": "PATTERN",
       "value": "\\\\s+"
-    },
-    "_dot": {
-      "type": "STRING",
-      "value": "."
     },
     "equals": {
       "type": "STRING",
@@ -84,23 +167,6 @@
         }
       ]
     },
-    "string": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "'"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "STRING",
-          "value": "'"
-        }
-      ]
-    },
     "variable": {
       "type": "SEQ",
       "members": [
@@ -116,15 +182,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "null"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "boolean"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "string"
+                  "name": "type"
                 },
                 {
                   "type": "SEQ",
@@ -164,15 +222,7 @@
                       "members": [
                         {
                           "type": "SYMBOL",
-                          "name": "null"
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "boolean"
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "string"
+                          "name": "type"
                         },
                         {
                           "type": "SEQ",
