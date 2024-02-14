@@ -1,5 +1,10 @@
 [
   {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "context",
     "named": true,
     "fields": {},
@@ -72,11 +77,19 @@
       "required": true,
       "types": [
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
           "type": "context",
           "named": true
         },
         {
           "type": "equals",
+          "named": true
+        },
+        {
+          "type": "null",
           "named": true
         },
         {
@@ -107,8 +120,20 @@
     "named": true
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "null",
+    "named": true
+  },
+  {
+    "type": "true",
+    "named": false
   },
   {
     "type": "}}",

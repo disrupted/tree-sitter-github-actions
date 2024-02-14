@@ -17,6 +17,23 @@
         }
       ]
     },
+    "null": {
+      "type": "STRING",
+      "value": "null"
+    },
+    "boolean": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        }
+      ]
+    },
     "identifier": {
       "type": "PATTERN",
       "value": "[a-z]+"
@@ -99,6 +116,14 @@
               "members": [
                 {
                   "type": "SYMBOL",
+                  "name": "null"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "boolean"
+                },
+                {
+                  "type": "SYMBOL",
                   "name": "string"
                 },
                 {
@@ -125,36 +150,57 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "equals"
-            },
-            {
               "type": "CHOICE",
               "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "string"
-                },
                 {
                   "type": "SEQ",
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "context"
+                      "name": "equals"
                     },
                     {
                       "type": "CHOICE",
                       "members": [
                         {
                           "type": "SYMBOL",
-                          "name": "property"
+                          "name": "null"
                         },
                         {
-                          "type": "BLANK"
+                          "type": "SYMBOL",
+                          "name": "boolean"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "string"
+                        },
+                        {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "context"
+                            },
+                            {
+                              "type": "CHOICE",
+                              "members": [
+                                {
+                                  "type": "SYMBOL",
+                                  "name": "property"
+                                },
+                                {
+                                  "type": "BLANK"
+                                }
+                              ]
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
+                },
+                {
+                  "type": "BLANK"
                 }
               ]
             }

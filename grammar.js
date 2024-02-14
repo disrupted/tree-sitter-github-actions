@@ -10,6 +10,8 @@ module.exports = grammar({
         // TODO: other kinds of definitions
       ),
 
+    null: $ => 'null',
+    boolean: $ => choice('true', 'false'),
     identifier: $ => /[a-z]+/,
     env_var: $ => /[A-Z_]+/,
     number: $ => /\d+/,
@@ -24,14 +26,19 @@ module.exports = grammar({
         "${{",
         seq(
             choice(
+                $.null,
+                $.boolean,
                 $.string,
                 seq($.context, optional($.property))
             ),
-            $.equals,
-            choice(
-                $.string,
-                seq($.context, optional($.property))
-            ),
+            optional(seq(
+                $.equals,
+                choice(
+                    $.null,
+                    $.boolean,
+                    $.string,
+                    seq($.context, optional($.property))
+            ))),
         ),
         "}}"
     ),
