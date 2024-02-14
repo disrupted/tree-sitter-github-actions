@@ -15,15 +15,23 @@ module.exports = grammar({
     number: $ => /\d+/,
     whitespace: $ => /\\s+/,
     _dot: $ => '.',
+    equals: $ => '==',
     context: $ => $.identifier,
     property: $ => seq($._dot, choice($.identifier, $.env_var)),
     string: $ => seq("'", $.identifier, "'"),
 
     variable: $ => seq(
         "${{",
-        choice(
-            $.string,
-            seq($.context, optional($.property))
+        seq(
+            choice(
+                $.string,
+                seq($.context, optional($.property))
+            ),
+            $.equals,
+            choice(
+                $.string,
+                seq($.context, optional($.property))
+            ),
         ),
         "}}"
     ),

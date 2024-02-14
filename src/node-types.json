@@ -76,6 +76,10 @@
           "named": true
         },
         {
+          "type": "equals",
+          "named": true
+        },
+        {
           "type": "property",
           "named": true
         },
@@ -96,6 +100,10 @@
   },
   {
     "type": "env_var",
+    "named": true
+  },
+  {
+    "type": "equals",
     "named": true
   },
   {
