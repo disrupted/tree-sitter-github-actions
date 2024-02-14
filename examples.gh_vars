@@ -21,6 +21,8 @@ ${{ context.property || true }}
 
 ${{ github.ref == 'refs/heads/main' && 'value_for_main_branch' || 'value_for_other_branches' }}
 
+${{ success() }}
 ${{ func(foo) }}
 ${{ func(foo, bar) }}
 ${{ contains(github.event.issue.labels.*.name, 'bug') }}
+${{ failure() && steps.demo.conclusion == 'failure' }}
