@@ -33,4 +33,4 @@ ${{ () }}
 ${{ (success()) }}
 ${{ (success() || true) }}
 ${{ (foo && bar()) }}
-${{ inputs.mode && inputs.execute && (success() || needs.dry-run.result == 'skipped' )}}
+${{ inputs.mode && inputs.execute && (success() || needs.dry-run.result == 'skipped') }}
