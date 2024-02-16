@@ -53,7 +53,7 @@ module.exports = grammar({
             $.or,
         ),
     logical_group: $ => seq("(", optional($.expression), ")"),
-    index: $ => "[ ]",
+    index: $ => seq("[", $.string, "]"),
     property_deref: $ => $._dot,
     not: $ => "!",
     lt: $ => "<",
@@ -70,7 +70,7 @@ module.exports = grammar({
     property: $ => seq($.property_deref, choice($.identifier, $.asterisk)),
 
     expression: $ => sep1(seq(optional($.not), $.arg), $.operator),
-    arg: $ => choice($.logical_group, $.type, $.call, seq($.context, optional(repeat($.property)))),
+    arg: $ => choice($.logical_group, $.type, $.call, seq($.context, optional(repeat(choice($.property, $.index))))),
     call: $ => prec(2, seq(field("function", $.identifier), "(", field("arguments", optional($._call_args)), ")")),
     _call_args: $ => sep1($.arg, ","),
 

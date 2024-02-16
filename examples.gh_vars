@@ -38,3 +38,6 @@ ${{ (success()) }}
 ${{ (success() || true) }}
 ${{ (foo && bar()) }}
 ${{ inputs.mode && inputs.execute && (success() || needs.dry-run.result == 'skipped') }}
+
+${{ github['sha'] }}
+${{ steps.prop1['foo'].prop2['bar'] }}

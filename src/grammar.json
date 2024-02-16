@@ -261,8 +261,21 @@
       ]
     },
     "index": {
-      "type": "STRING",
-      "value": "[ ]"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "property_deref": {
       "type": "SYMBOL",
@@ -421,8 +434,17 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "SYMBOL",
-                    "name": "property"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "property"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "index"
+                      }
+                    ]
                   }
                 },
                 {
