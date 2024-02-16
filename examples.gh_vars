@@ -12,6 +12,8 @@ ${{ 'refs/heads/main' }}
 
 ${{ context }}
 ${{ context.property }}
+${{ context._priv }}
+${{ context.dash-name_ }}
 
 ${{ vars.HELLO_WORLD }}
 ${{ env.ENV_VAR }}
