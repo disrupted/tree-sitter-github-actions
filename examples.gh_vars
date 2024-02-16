@@ -29,7 +29,11 @@ ${{ contains(github.event.issue.labels.*.name, 'bug') }}
 ${{ failure() && steps.demo.conclusion == 'failure' }}
 ${{ fromJSON(needs.job1.outputs.matrix.foo_bar) }}
 ${{ steps.set-matrix.outputs.matrix }}
+
+${{ !cancelled() }}
+
 ${{ () }}
+${{ (()) }}
 ${{ (success()) }}
 ${{ (success() || true) }}
 ${{ (foo && bar()) }}

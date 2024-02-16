@@ -203,10 +203,6 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "not"
-        },
-        {
-          "type": "SYMBOL",
           "name": "lt"
         },
         {
@@ -342,8 +338,25 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "arg"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "not"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "arg"
+            }
+          ]
         },
         {
           "type": "REPEAT",
@@ -355,8 +368,25 @@
                 "name": "operator"
               },
               {
-                "type": "SYMBOL",
-                "name": "arg"
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "not"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "arg"
+                  }
+                ]
               }
             ]
           }

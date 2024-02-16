@@ -112,6 +112,10 @@
           "named": true
         },
         {
+          "type": "not",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         }
@@ -182,10 +186,6 @@
         },
         {
           "type": "ne",
-          "named": true
-        },
-        {
-          "type": "not",
           "named": true
         },
         {
