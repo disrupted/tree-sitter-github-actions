@@ -52,7 +52,7 @@ module.exports = grammar({
             $.and,
             $.or,
         ),
-    logical_group: $ => "( )",
+    logical_group: $ => seq("(", optional(sep1($.arg, $.operator)), ")"),
     index: $ => "[ ]",
     property_deref: $ => $._dot,
     not: $ => "!",
@@ -71,7 +71,7 @@ module.exports = grammar({
     property: $ => seq($.property_deref, choice($.identifier, $.env_var, $.asterisk)),
 
     arg: $ => choice($.type, $.call, seq($.context, optional(repeat($.property)))),
-    call: $ => seq(field("function", $.identifier), "(", field("arguments", $._call_args), ")"),
+    call: $ => prec(2, seq(field("function", $.identifier), "(", field("arguments", $._call_args), ")")),
     _call_args: $ => seq($.arg, optional(repeat(seq(",", $.arg)))),
 
     variable_content: $ => seq(
@@ -92,3 +92,17 @@ module.exports = grammar({
       ),
   },
 });
+
+/**
+ * Creates a rule to match one or more occurrences of `rule` separated by `sep`
+ *
+ * @param {RuleOrLiteral} rule
+ *
+ * @param {RuleOrLiteral} separator
+ *
+ * @return {SeqRule}
+ *
+ */
+function sep1(rule, separator) {
+  return seq(rule, repeat(seq(separator, rule)));
+}

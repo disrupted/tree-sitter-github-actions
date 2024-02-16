@@ -111,6 +111,25 @@
     "fields": {}
   },
   {
+    "type": "logical_group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arg",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "operator",
     "named": true,
     "fields": {},
@@ -370,10 +389,6 @@
   },
   {
     "type": "le",
-    "named": true
-  },
-  {
-    "type": "logical_group",
     "named": true
   },
   {
