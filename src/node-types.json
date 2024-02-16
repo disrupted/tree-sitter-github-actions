@@ -208,10 +208,6 @@
           "named": true
         },
         {
-          "type": "env_var",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
@@ -350,10 +346,6 @@
   {
     "type": "e",
     "named": false
-  },
-  {
-    "type": "env_var",
-    "named": true
   },
   {
     "type": "eq",

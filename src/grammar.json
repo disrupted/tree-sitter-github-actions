@@ -42,7 +42,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z][-_a-zA-Z0-9]+"
+      "value": "[a-zA-Z][-_a-zA-Z0-9]+"
     },
     "type": {
       "type": "CHOICE",
@@ -308,10 +308,6 @@
       "type": "STRING",
       "value": "||"
     },
-    "env_var": {
-      "type": "PATTERN",
-      "value": "[A-Z_]+"
-    },
     "whitespace": {
       "type": "PATTERN",
       "value": "\\\\s+"
@@ -333,10 +329,6 @@
             {
               "type": "SYMBOL",
               "name": "identifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "env_var"
             },
             {
               "type": "SYMBOL",

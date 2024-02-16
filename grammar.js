@@ -14,7 +14,7 @@ module.exports = grammar({
     _number: $ => /\d+/,
     asterisk: $ => "*",
     string_content: _ => token(prec(-1, /([^'\\\r\n]|\\(.|\r?\n))+/)),
-    identifier: $ => /[a-z][-_a-zA-Z0-9]+/,
+    identifier: $ => /[a-zA-Z][-_a-zA-Z0-9]+/,
 
     // primitive types
     type: $ => choice(
@@ -65,10 +65,9 @@ module.exports = grammar({
     and: $ => "&&",
     or: $ => "||",
 
-    env_var: $ => /[A-Z_]+/,
     whitespace: $ => /\\s+/,
     context: $ => $.identifier,
-    property: $ => seq($.property_deref, choice($.identifier, $.env_var, $.asterisk)),
+    property: $ => seq($.property_deref, choice($.identifier, $.asterisk)),
 
     expression: $ => sep1($.arg, $.operator),
     arg: $ => choice($.logical_group, $.type, $.call, seq($.context, optional(repeat($.property)))),
