@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "logical_group",
+          "named": true
+        },
+        {
           "type": "property",
           "named": true
         },
@@ -96,6 +100,25 @@
     "fields": {}
   },
   {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arg",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "float",
     "named": true,
     "fields": {}
@@ -115,15 +138,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "arg",
-          "named": true
-        },
-        {
-          "type": "operator",
+          "type": "expression",
           "named": true
         }
       ]
@@ -154,15 +173,7 @@
           "named": true
         },
         {
-          "type": "index",
-          "named": true
-        },
-        {
           "type": "le",
-          "named": true
-        },
-        {
-          "type": "logical_group",
           "named": true
         },
         {
@@ -291,29 +302,10 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "variable_content",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "variable_content",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arg",
-          "named": true
-        },
-        {
-          "type": "operator",
+          "type": "expression",
           "named": true
         }
       ]
@@ -381,10 +373,6 @@
   },
   {
     "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "index",
     "named": true
   },
   {
