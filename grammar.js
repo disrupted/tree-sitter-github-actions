@@ -72,8 +72,8 @@ module.exports = grammar({
 
     expression: $ => sep1($.arg, $.operator),
     arg: $ => choice($.logical_group, $.type, $.call, seq($.context, optional(repeat($.property)))),
-    call: $ => prec(2, seq(field("function", $.identifier), "(", field("arguments", $._call_args), ")")),
-    _call_args: $ => seq($.arg, optional(repeat(seq(",", $.arg)))),
+    call: $ => prec(2, seq(field("function", $.identifier), "(", field("arguments", optional($._call_args)), ")")),
+    _call_args: $ => sep1($.arg, ","),
 
     variable: $ =>
       seq(
