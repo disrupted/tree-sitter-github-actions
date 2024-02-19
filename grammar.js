@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: "ghactions",
+  name: "githubactions",
 
   rules: {
     source_file: $ => repeat($._definition),

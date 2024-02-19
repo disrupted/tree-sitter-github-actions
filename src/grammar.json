@@ -1,5 +1,5 @@
 {
-  "name": "ghactions",
+  "name": "githubactions",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -572,4 +572,3 @@
   "inline": [],
   "supertypes": []
 }
-
