@@ -189,8 +189,16 @@
           "value": "'"
         },
         {
-          "type": "SYMBOL",
-          "name": "string_content"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string_content"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -317,9 +325,21 @@
       "type": "STRING",
       "value": "||"
     },
-    "whitespace": {
+    "_whitespace": {
       "type": "PATTERN",
       "value": "\\\\s+"
+    },
+    "_variable_indicator": {
+      "type": "STRING",
+      "value": "$"
+    },
+    "_variable_open": {
+      "type": "STRING",
+      "value": "{{"
+    },
+    "_variable_close": {
+      "type": "STRING",
+      "value": "}}"
     },
     "context": {
       "type": "SYMBOL",
@@ -531,11 +551,7 @@
         },
         {
           "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "STRING",
-          "value": "{"
+          "value": "{{"
         },
         {
           "type": "CHOICE",
@@ -551,11 +567,7 @@
         },
         {
           "type": "STRING",
-          "value": "}"
-        },
-        {
-          "type": "STRING",
-          "value": "}"
+          "value": "}}"
         }
       ]
     }

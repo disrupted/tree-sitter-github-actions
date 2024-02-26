@@ -21,6 +21,7 @@ ${{ env.ENV_VAR }}
 ${{ context.property == 'true' }}
 ${{ context.property || 'true' }}
 ${{ context.property || true }}
+${{ inputs.defaults != '' }}
 
 ${{ github.ref == 'refs/heads/main' && 'value_for_main_branch' || 'value_for_other_branches' }}
 
@@ -43,3 +44,5 @@ ${{ inputs.mode && inputs.execute && (success() || needs.dry-run.result == 'skip
 
 ${{ github['sha'] }}
 ${{ steps.prop1['foo'].prop2['bar'] }}
+
+${{ (inputs.defaults != '' && format('--defaults {0}', inputs.defaults)) || '' }}

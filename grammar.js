@@ -35,7 +35,7 @@ module.exports = grammar({
     float: $ => $._float,
     hex: $ => seq("0x", /[0-9a-f]+/),
     exp: $ => seq($._float, "e", optional("-"), $._number),
-    string: $ => seq("'", $.string_content, "'"),
+    string: $ => seq("'", optional($.string_content), "'"),
 
     // operators
     operator: $ => choice(
@@ -65,7 +65,12 @@ module.exports = grammar({
     and: $ => "&&",
     or: $ => "||",
 
-    whitespace: $ => /\\s+/,
+    // special
+    _whitespace: $ => /\\s+/,
+    _variable_indicator: $ => "$",
+    _variable_open: $ => "{{",
+    _variable_close: $ => "}}",
+
     context: $ => $.identifier,
     property: $ => seq($.property_deref, choice($.identifier, $.asterisk)),
 
@@ -76,12 +81,13 @@ module.exports = grammar({
 
     variable: $ =>
       seq(
+        // $._variable_indicator,
+        // $._variable_open,
         "$",
-        "{",
-        "{",
+        "{{",
         optional($.expression),
-        "}",
-        "}",
+        "}}",
+        // $._variable_close,
       ),
   },
 });

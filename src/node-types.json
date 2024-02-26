@@ -263,7 +263,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "string_content",
@@ -427,11 +427,11 @@
     "named": true
   },
   {
-    "type": "{",
+    "type": "{{",
     "named": false
   },
   {
-    "type": "}",
+    "type": "}}",
     "named": false
   }
 ]
